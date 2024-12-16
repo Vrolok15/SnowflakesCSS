@@ -3,17 +3,121 @@ body{
     font-size: 2em;
     font-weight: 400;
     color: white;
-    background-color: #000081;
     text-align: center;
     font-style: normal;
     position: relative;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
 
 footer{
     position: absolute;
     bottom: 0;
+}
+
+.snowfall{
+    top: 0;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    overflow: hidden;
+    background: linear-gradient(#4C4CA6,#000081 85%);
+}
+
+.snowflake{
+    --small: 3px;
+    --medium: 7px;
+    width: var(--small);
+    height: var(--small);
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: snow 6s linear infinite,
+        wind 10s ease-in-out infinite;
+    top: 10%;
+}
+
+.snowflake:nth-child(2n + 3){
+    /* 3, 5, 7, etc... */
+    width: var(--medium);
+    height: var(--medium)
+}
+
+.snowflake:nth-child(1){
+    left: 5%;
+    animation-delay: 100ms;
+}
+
+.snowflake:nth-child(2){
+    left: 69%;
+}
+
+.snowflake:nth-child(3){
+    left: 44%;
+    animation-delay: 1s;
+}
+
+.snowflake:nth-child(4){
+    left: 12%;
+    animation-delay: 500ms;
+}
+
+.snowflake:nth-child(5){
+    left: 21%;
+    animation-delay: 1s;
+}
+
+.snowflake:nth-child(5){
+    left: 19%;
+}
+
+.snowflake:nth-child(6){
+    left: 51%;
+    animation-delay: 2s;
+}
+
+.snowflake:nth-child(7){
+    left: 11%;
+    animation-delay: 1s;
+}
+
+.snowflake:nth-child(8){
+    left: 32%;
+    animation-delay: 750ms;
+}
+
+
+.snowflake:nth-child(9){
+    left: 55%;
+}
+
+
+.snowflake:nth-child(10){
+    left: 95%;
+    animation-delay: 600ms;
+}
+
+.snowflake:nth-child(11){
+    left: 40%;
+}
+
+
+.snowflake:nth-child(12){
+    left: 72%;
+    animation-delay: 350ms;
+}
+
+@keyframes snow{
+    100% {
+        top: 100%;
+    }
+}
+
+@keyframes wind{
+    50% {
+        transform: translateX(120px);
+    }
 }
