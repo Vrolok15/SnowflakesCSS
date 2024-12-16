@@ -1,0 +1,19 @@
+body{
+    font-family: "Mountains of Christmas", serif;
+    font-size: 2em;
+    font-weight: 400;
+    color: white;
+    background-color: #000081;
+    text-align: center;
+    font-style: normal;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+}
