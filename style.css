@@ -30,94 +30,121 @@ footer{
 .snowflake{
     --small: 3px;
     --medium: 7px;
+    --large: 10px;
     width: var(--small);
     height: var(--small);
     position: absolute;
     background-color: white;
     border-radius: 50%;
     animation: snow 6s linear infinite,
-        wind 10s ease-in-out infinite;
-    top: 10%;
+        wind 10s ease-in-out infinite,
+        sparkle 2s ease-in-out infinite;
+    top: -10%;
+    --random-left: random(100);
+    left: calc(var(--random-left) * 1%);
+    animation-delay: calc(var(--random-delay) * 1ms);
+    opacity: 0;
+    animation-play-state: paused;
+    filter: blur(0.5px);
 }
 
-.snowflake:nth-child(2n + 3){
-    /* 3, 5, 7, etc... */
-    width: var(--medium);
-    height: var(--medium)
-}
-
-.snowflake:nth-child(1){
-    left: 5%;
-    animation-delay: 100ms;
-}
-
-.snowflake:nth-child(2){
-    left: 69%;
-}
-
-.snowflake:nth-child(3){
-    left: 44%;
-    animation-delay: 1s;
-}
-
-.snowflake:nth-child(4){
-    left: 12%;
-    animation-delay: 500ms;
-}
-
-.snowflake:nth-child(5){
-    left: 21%;
-    animation-delay: 1s;
-}
-
-.snowflake:nth-child(5){
-    left: 19%;
-}
-
-.snowflake:nth-child(6){
-    left: 51%;
-    animation-delay: 2s;
-}
-
-.snowflake:nth-child(7){
-    left: 11%;
-    animation-delay: 1s;
-}
-
-.snowflake:nth-child(8){
-    left: 32%;
-    animation-delay: 750ms;
-}
-
-
-.snowflake:nth-child(9){
-    left: 55%;
-}
-
-
-.snowflake:nth-child(10){
-    left: 95%;
-    animation-delay: 600ms;
-}
-
-.snowflake:nth-child(11){
-    left: 40%;
-}
-
-
-.snowflake:nth-child(12){
-    left: 72%;
-    animation-delay: 350ms;
-}
-
-@keyframes snow{
-    100% {
-        top: 100%;
+@media (prefers-reduced-motion: no-preference) {
+    .snowflake {
+        opacity: 1;
+        animation-play-state: running;
     }
 }
 
-@keyframes wind{
+.snowflake:nth-child(1) { --random-left: 3; --random-delay: 1234; }
+.snowflake:nth-child(2) { --random-left: 84; --random-delay: 2345; }
+.snowflake:nth-child(3) { --random-left: 45; --random-delay: 3456; }
+.snowflake:nth-child(4) { --random-left: 97; --random-delay: 4567; }
+.snowflake:nth-child(5) { --random-left: 28; --random-delay: 5678; }
+.snowflake:nth-child(6) { --random-left: 11; --random-delay: 6789; }
+.snowflake:nth-child(7) { --random-left: 48; --random-delay: 7890; }
+.snowflake:nth-child(8) { --random-left: 73; --random-delay: 8901; }
+.snowflake:nth-child(9) { --random-left: 34; --random-delay: 9012; }
+.snowflake:nth-child(10) { --random-left: 17; --random-delay: 0123; }
+.snowflake:nth-child(11) { --random-left: 41; --random-delay: 1234; }
+.snowflake:nth-child(12) { --random-left: 25; --random-delay: 2345; }
+.snowflake:nth-child(13) { --random-left: 89; --random-delay: 3456; }
+.snowflake:nth-child(14) { --random-left: 37; --random-delay: 4567; }
+.snowflake:nth-child(15) { --random-left: 62; --random-delay: 5678; }
+.snowflake:nth-child(16) { --random-left: 45; --random-delay: 6789; }
+.snowflake:nth-child(17) { --random-left: 27; --random-delay: 7890; }
+.snowflake:nth-child(18) { --random-left: 15; --random-delay: 3156; }
+.snowflake:nth-child(19) { --random-left: 93; --random-delay: 1567; }
+.snowflake:nth-child(20) { --random-left: 52; --random-delay: 2789; }
+.snowflake:nth-child(21) { --random-left: 68; --random-delay: 3912; }
+.snowflake:nth-child(22) { --random-left: 33; --random-delay: 1234; }
+.snowflake:nth-child(23) { --random-left: 77; --random-delay: 2567; }
+.snowflake:nth-child(24) { --random-left: 21; --random-delay: 3789; }
+.snowflake:nth-child(25) { --random-left: 95; --random-delay: 1123; }
+.snowflake:nth-child(26) { --random-left: 44; --random-delay: 2345; }
+.snowflake:nth-child(27) { --random-left: 88; --random-delay: 3456; }
+.snowflake:nth-child(28) { --random-left: 12; --random-delay: 1678; }
+.snowflake:nth-child(29) { --random-left: 66; --random-delay: 2789; }
+.snowflake:nth-child(30) { --random-left: 31; --random-delay: 3912; }
+
+.snowflake:nth-child(7n) {
+    width: var(--large);
+    height: var(--large);
+    animation-duration: 8s, 12s;
+}
+.snowflake:nth-child(5n) {
+    width: var(--medium);
+    height: var(--medium);
+    animation-duration: 7s, 11s;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+@keyframes snow {
+    0% {
+        opacity: 0;
+        transform: scale(.1) rotate(0deg);
+    }
+    25% {
+        opacity: 0.5;
+        transform: scale(0.8) rotate(45deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05) rotate(90deg);
+    }
+    75% {
+        opacity: 0.8;
+        transform: scale(0.9) rotate(135deg);
+    }
+    100% {
+        top: 100%;
+        opacity: 0.3;
+        transform: scale(0.7) rotate(180deg);
+    }
+}
+@keyframes wind {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(40px);
+    }
     50% {
         transform: translateX(120px);
     }
+    75% {
+        transform: translateX(40px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 }
